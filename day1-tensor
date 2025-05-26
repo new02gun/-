@@ -1,0 +1,11 @@
+import torch
+a= torch.tenseor([1,2,3])
+print("1D 텐서:",a)
+
+b= torch.tensor([[1,2],[3,4]])
+print("2D 텐서:\n",b)
+
+c=torch.rand(2,3,4)
+print("3D텐서 (2x3x4):\n",c)
+
+  
