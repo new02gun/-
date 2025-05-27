@@ -1,0 +1,46 @@
+import torch
+a = torch.tensor([1.0,2.0,3.0])
+print(a)
+-----------------------------
+import time
+import torch
+start = time.time()
+a= torch.tensor([1.0,2.0,3.0])
+print("Tensor:",a)
+print("소요시간은 다음과 같습니다",time.time()-start)
+---------------------------------
+import torch 
+import torch.nn as nn
+
+x = torch.tensor([[1.0,2.0],[2.0,3.0],[3.0,4.0]])
+
+model = nn.Sequential(     # 모델 구조
+    nn.Linear(2,4),
+    nn.ReLU(),
+    nn.Linear(4,1)
+)
+output = model(x)
+
+print("출력값 ",output)
+------------------------
+import torch
+import torch.nn as nn
+
+x= torch.tensor([[1.0],[2.0],[3.0],[4.0]])
+y= torch.tensor([[2.0],[4.0],[6.0],[8.0]])
+
+model = nn.Linear(1,1)
+
+criterion = nn.MSELoss()
+optimizer = torch.optim.SGD(model.parameters(),lr=0.01)
+
+for epoch in range(1000):
+    pred = model(x) # 모델 예측
+    loss = criterion(pred,y) #손실 계산
+
+    optimizer.zero_grad() #기울기 초기화
+    loss.backward() #역전파로 기울기 계산(손실함수부터 거꾸로 가서 가중치를 찾고 변경)
+    optimizer.step()#가중치 업데이트
+
+    if epoch % 100 == 0:
+       print(f"Epoch{epoch}, Loss: {loss.item():.4f}")
