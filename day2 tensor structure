@@ -32,7 +32,7 @@ y= torch.tensor([[2.0],[4.0],[6.0],[8.0]])
 model = nn.Linear(1,1)
 
 criterion = nn.MSELoss()
-optimizer = torch.optim.SGD(model.parameters(),lr=0.01)
+optimizer = torch.optim.SGD(model.parameters(),lr=0.01)#(현재 가장 많이 사용되는 SGD사용)
 
 for epoch in range(1000):
     pred = model(x) # 모델 예측
